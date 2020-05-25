@@ -19,7 +19,7 @@ func main() {
 	})
 
 	// Run http server
-	if err := r.Run(":8052"); err != nil {
+	if err := r.Run(":8058"); err != nil {
 		log.Fatalf("could not run server: %v", err)
 	}
 }
@@ -27,7 +27,7 @@ func main() {
 func sayHello(c *gin.Context) {
 
 	// Set up a connection to the server.
-	conn, err := grpc.Dial("localhost:50052", grpc.WithInsecure())
+	conn, err := grpc.Dial("localhost:60051", grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
@@ -35,7 +35,7 @@ func sayHello(c *gin.Context) {
 	defer conn.Close()
 
 	client := pb.NewHelloClient(conn)
-	name := c.DefaultQuery("name","战士上战场")
+	name := c.DefaultQuery("name","GO微服务ＧＲＰＣ来了！")
 	req := &pb.HelloRequest{Name: name}
 	res, err := client.SayHello(c, req)
 

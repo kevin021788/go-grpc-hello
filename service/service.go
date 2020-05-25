@@ -24,7 +24,7 @@ func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloRe
 
 func main() {
 
-	lis, err := net.Listen("tcp", ":50052")
+	lis, err := net.Listen("tcp", ":60051")
 
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
